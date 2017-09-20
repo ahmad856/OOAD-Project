@@ -70,7 +70,9 @@ public class Book extends LMS{
 
 public class Person extends LMS{
 
-    
+    String name;
+    String address;
+    String phone;
     
 }
 
@@ -79,6 +81,7 @@ public class Borrower extends Person{
     ArrayList<Loan> loans;
     ArrayList<Book> books;
     int finepaid;
+    String uid;
     
     public void checkinfo(){
     
@@ -86,7 +89,14 @@ public class Borrower extends Person{
     
     public void listbooks(){
     
-    }   
+    }
+    
+    public void printinfo(){
+        System.out.println("Name: " + name);
+        System.out.println("Address: " + address);
+        System.out.println("Phone: " + phone);
+        System.out.println("Uni ID: " + uid);
+    }
 }
 
 public class Librarian extends Person{
@@ -102,7 +112,6 @@ public class Librarian extends Person{
     public void updateitem(){
     
     }
-    
 }
 
 public class Clerk extends Person{
@@ -122,5 +131,4 @@ public class Clerk extends Person{
     public void updateborrower(){
     
     }
-    
 }
