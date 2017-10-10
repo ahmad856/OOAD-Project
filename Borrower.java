@@ -73,4 +73,21 @@ public class Borrower extends Person{
         System.out.println("Phone : "+phone);
         
     }
+    
+    public void listCurrentBooks(){
+        System.out.println("");
+        System.out.println("This borrower has borrowed the following books currently : ");
+        for(int i=0;i<loans.size();i++){
+            System.out.println((i+1)+". "+loans.get(i).bk.name+" by "+loans.get(i).bk.author);
+        }
+    }
+    
+    public void  printInfoAndCurrentBooks(){
+        printInfo();
+        listCurrentBooks();
+    }
+    
+    public int getCount(){return noOfBorrowers;}
+    public void addBalance(int amount){balance+=amount;}
+    public int getBalance(){return balance;   
 }
