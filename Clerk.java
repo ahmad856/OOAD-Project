@@ -1,12 +1,17 @@
 public class Clerk extends Staff{
     
-    protected int cid;
     protected static int noOfClerks=0;
     
-    public Clerk(String n,String a,String p){
+    public Clerk(String n,String a,String p,String pass){
     
-        super(n,a,p);
-        cid=noOfClerks;
+        super(n,a,p,pass);
+        noOfClerks++;
+    }
+    
+        
+    public Clerk(String n,String a,String p,String pass,int id,LMS l){
+    
+        super(n,a,p,pass,id,l);
         noOfClerks++;
     }
     
