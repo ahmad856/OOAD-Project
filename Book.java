@@ -1,41 +1,47 @@
-public class Book {
+import java.util.LinkedList;
+import java.util.Queue;
+public class Book{
     
+    protected int bkid;
     protected String name;
     protected String author;
     protected String subject;
-    protected ArrayList<Loan> loans;
-    protected LMS lib;
-    protected boolean hold;
-    
-    public Book(String name, String author, String subject) {
+    protected Loan loan;
+    protected Queue<Borrower> waitingList;
+    LMS lib;
+    protected static int noOfBooks=0;
+
+    public Book(int bkid, String name, String author, String subject,LMS l) {
+        this.bkid = bkid;
         this.name = name;
         this.author = author;
         this.subject = subject;
-        this.loans=new ArrayList<>();
-        this.hold = false;
+        noOfBooks++;
+        loan=null;
+        waitingList=new LinkedList<>();
+        lib=l;
+        l.collection.add(this);
     }
     
-    public boolean isHeld(){return hold;}
+    public Book(String name, String author, String subject) {
+        this.bkid=noOfBooks;
+        noOfBooks++;
+        this.name = name;
+        this.author = author;
+        this.subject = subject;
+        loan=null;
+        waitingList=new LinkedList<>();
+    }
     
-    public void printHistory(){
-    
-        System.out.println("");
-        System.out.println("Loan history of book '"+name+"' by "+author+" :");
-        System.out.println("");
-        for(int i=0;i<loans.size();i++){
-        
-            System.out.print("Issued by "+loans.get(i).br.name+" on ");
-            loans.get(i).issue.printDate();
-            System.out.println(".");
-        }
+    public boolean isHeld(){
+        return loan != null;
     }
     
     public void printInfo(){
-    
         System.out.println("");
         System.out.println("Name : "+name);
         System.out.println("Author : "+author);
         System.out.println("Subject : "+subject);
-        System.out.println("Currently held? : "+hold);
-    }
+        System.out.println("Currently held? : "+isHeld());
+    }   
 }
