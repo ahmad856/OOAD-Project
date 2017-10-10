@@ -38,5 +38,4 @@ public class Book {
         System.out.println("Subject : "+subject);
         System.out.println("Currently held? : "+hold);
     }
-    
 }
