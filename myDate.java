@@ -9,6 +9,38 @@ public class myDate {
     private int date=0;
     private int month=0;
     private int year=0;
+
+
+    public myDate(Date dt){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String strDate = dateFormat.format(dt);
+        
+        String[] strs=strDate.split("-");
+        date=Integer.parseInt(strs[0]);
+        month=Integer.parseInt(strs[1]);
+        year=Integer.parseInt(strs[2]);
+    }
+    
+    public myDate(){
+    
+        Date dt = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String strDate = dateFormat.format(dt);
+        
+        String[] strs=strDate.split("-");
+        date=Integer.parseInt(strs[0]);
+        month=Integer.parseInt(strs[1]);
+        year=Integer.parseInt(strs[2]);
+    }
+    
+    public myDate(String str){
+    
+        String[] strs=str.split("-");
+        date=Integer.parseInt(strs[0]);
+        month=Integer.parseInt(strs[1]);
+        year=Integer.parseInt(strs[2]);
+    
+    }
     
     public myDate(int d,int m,int y){
         
@@ -31,7 +63,7 @@ public class myDate {
                 inputString1 = myFormat.format(c.getTime());  // dt is now the new date
             }
             catch(ParseException e) {
-            e.printStackTrace();
+                System.out.println(e.getMessage());
             }
             return new myDate(Integer.parseInt(inputString1.substring(0,2)),Integer.parseInt(inputString1.substring(3,5))
             ,Integer.parseInt(inputString1.substring(6,10)));
@@ -107,5 +139,4 @@ public class myDate {
         
         System.out.print(date+"-"+month+"-"+year);
     }
-    
 }
